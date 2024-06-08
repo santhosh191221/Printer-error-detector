@@ -1,0 +1,24 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Receipt {
+  createdAt     DateTime @default(now())
+  id            String   @id @default(cuid())
+  image         Json?
+  processedData Json?
+  updatedAt     DateTime @updatedAt
+}
+
+model PrinterSheet {
+  createdAt      DateTime @default(now())
+  id             String   @id @default(cuid())
+  missingNozzles String?
+  sectionData    String?
+  updatedAt      DateTime @updatedAt
+}
